@@ -1,7 +1,7 @@
 # chenguang-agent-
 
 #### 介绍
-《天宫医疗-智能体》集中于解决医疗领域的 Agent 业务构建。包括：
+解决医疗领域的 Agent 业务构建。包括：
 1. 智慧问诊 Agent
 2. 报告解读 Agent
 3. 药物 Agent
