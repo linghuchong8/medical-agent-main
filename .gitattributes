@@ -1,0 +1,4 @@
+# 确保 shell 脚本始终以 LF 行尾存仓（Windows 检出也不会被转成 CRLF）
+*.sh text eol=lf
+*.bat text eol=crlf
+*.py text eol=lf
