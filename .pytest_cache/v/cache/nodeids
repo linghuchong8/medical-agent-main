@@ -1,0 +1,5 @@
+[
+  "test/test_supervisor_agent.py::test_agent_memory",
+  "test/test_supervisor_agent.py::test_agent_store",
+  "test/test_supervisor_agent.py::test_supervisor_agent"
+]

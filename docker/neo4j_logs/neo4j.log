@@ -1,0 +1,25 @@
+2026-08-05 00:15:58.720+0000 INFO  Logging config in use: File '/var/lib/neo4j/conf/user-logs.xml'
+2026-08-05 00:15:58.790+0000 INFO  Starting...
+2026-08-05 00:16:01.569+0000 INFO  This instance is ServerId{6f895996} (6f895996-ae32-4186-bc8d-a168215424ea)
+2026-08-05 00:16:03.151+0000 INFO  ======== Neo4j 5.20.0 ========
+2026-08-05 00:17:03.143+0000 INFO  Anonymous Usage Data is being sent to Neo4j, see https://neo4j.com/docs/usage_data/
+2026-08-05 00:17:03.241+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+2026-08-05 00:17:04.683+0000 INFO  HTTP enabled on 0.0.0.0:7474.
+2026-08-05 00:17:04.686+0000 INFO  Remote interface available at http://localhost:7474/
+2026-08-05 00:17:04.692+0000 INFO  id: 0134D63B73FA890BC74111F7E3EA9F21711E927A0D77A62B812EEA01E74E25CF
+2026-08-05 00:17:04.693+0000 INFO  name: system
+2026-08-05 00:17:04.694+0000 INFO  creationDate: 2026-08-05T00:16:05.288Z
+2026-08-05 00:17:04.695+0000 INFO  Started.
+2026-08-05 00:32:08.091+0000 ERROR Client triggered an unexpected error [Neo.DatabaseError.General.UnknownError]: Failed to transmit operation result: Response write failure, reference 8a5c0cef-de8e-4e34-ae8c-5b70e54e4784.
+2026-08-06 15:56:11.906+0000 INFO  Logging config in use: File '/var/lib/neo4j/conf/user-logs.xml'
+2026-08-06 15:56:11.944+0000 INFO  Starting...
+2026-08-06 15:56:14.209+0000 INFO  This instance is ServerId{6f895996} (6f895996-ae32-4186-bc8d-a168215424ea)
+2026-08-06 15:56:18.465+0000 INFO  ======== Neo4j 5.20.0 ========
+2026-08-06 15:56:40.557+0000 INFO  Anonymous Usage Data is being sent to Neo4j, see https://neo4j.com/docs/usage_data/
+2026-08-06 15:56:40.714+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+2026-08-06 15:56:43.161+0000 INFO  HTTP enabled on 0.0.0.0:7474.
+2026-08-06 15:56:43.165+0000 INFO  Remote interface available at http://localhost:7474/
+2026-08-06 15:56:43.177+0000 INFO  id: 0134D63B73FA890BC74111F7E3EA9F21711E927A0D77A62B812EEA01E74E25CF
+2026-08-06 15:56:43.182+0000 INFO  name: system
+2026-08-06 15:56:43.186+0000 INFO  creationDate: 2026-08-05T00:16:05.288Z
+2026-08-06 15:56:43.189+0000 INFO  Started.

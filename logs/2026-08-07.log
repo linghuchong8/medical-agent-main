@@ -1,0 +1,1320 @@
+2026-08-07 00:00:27 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /
+2026-08-07 00:00:27 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET / status=404 23.04ms
+2026-08-07 00:02:39 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health
+2026-08-07 00:02:39 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health status=200 1.41ms
+2026-08-07 00:02:39 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health/deps
+2026-08-07 00:02:40 | INFO     | src.infra.milvus_client:check_milvus_health:38 - Milvus 连接成功，当前集合数量：1
+2026-08-07 00:02:40 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health/deps status=200 639.69ms
+2026-08-07 00:03:46 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /
+2026-08-07 00:03:46 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET / status=404 2.53ms
+2026-08-07 00:04:54 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:04:54 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.81ms
+2026-08-07 00:04:57 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 00:05:55 | WARNING  | src.agents.supervisor_agent:_warmup_embedding:39 - Ollama 模型预热失败，将在首次使用时重试:  (status code: 503)
+2026-08-07 00:06:03 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=200 66131.74ms
+2026-08-07 00:06:15 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 00:06:18 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=200 3532.86ms
+2026-08-07 00:14:42 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:14:42 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.18ms
+2026-08-07 00:14:46 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 00:14:53 | ERROR    | src.modules.chat:chat:56 - 对话失败: user=ui83w0qog session=st7ef55mo error=Connection error.
+Traceback (most recent call last):
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+                 │    │     │                    └ <Request [b'POST']>
+                 │    │     └ <function AsyncConnectionPool.handle_async_request at 0x000001DD91C328E0>
+                 │    └ <AsyncHTTPProxy [Requests: 0 active, 0 queued | Connections: 0 active, 0 idle]>
+                 └ <httpx.AsyncHTTPTransport object at 0x000001DD930FC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+                     │          └ <function AsyncTunnelHTTPConnection.handle_async_request at 0x000001DD91C33BA0>
+                     └ <AsyncTunnelHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\http_proxy.py", line 288, in handle_async_request
+    connect_response = await self._connection.handle_async_request(
+                             │    │           └ <function AsyncHTTPConnection.handle_async_request at 0x000001DD91C319E0>
+                             │    └ <AsyncHTTPConnection [CONNECTION FAILED]>
+                             └ <AsyncTunnelHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+                   │    │        └ <Request [b'CONNECT']>
+                   │    └ <function AsyncHTTPConnection._connect at 0x000001DD91C31A80>
+                   └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+                   │    │                │             └ {'host': '127.0.0.1', 'port': 10812, 'local_address': None, 'timeout': 5.0, 'socket_options': None}
+                   │    │                └ <function AutoBackend.connect_tcp at 0x000001DD91C13880>
+                   │    └ <httpcore._backends.auto.AutoBackend object at 0x000001DD930FCCB0>
+                   └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+                 │    │        └ <function AnyIOBackend.connect_tcp at 0x000001DD91C35940>
+                 │    └ <httpcore.AnyIOBackend object at 0x000001DD93092990>
+                 └ <httpcore._backends.auto.AutoBackend object at 0x000001DD930FCCB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         │              └ {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>, <class 'anyio...
+         └ <function map_exceptions at 0x000001DD91BAF4C0>
+  File "D:\software\python3.13\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    │    │   │     └ OSError('All connection attempts failed')
+    │    │   └ <method 'throw' of 'generator' objects>
+    │    └ <generator object map_exceptions at 0x000001DD93269990>
+    └ <contextlib._GeneratorContextManager object at 0x000001DD9328C280>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+          └ <class 'httpcore.ConnectError'>
+
+httpcore.ConnectError: All connection attempts failed
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1604, in request
+    response = await self._client.send(
+                     │    │       └ <function AsyncClient.send at 0x000001DD8EF4A020>
+                     │    └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+                     └ <openai.AsyncOpenAI object at 0x000001DD930DC6E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+                     │    └ <function AsyncClient._send_handling_auth at 0x000001DD8EF4A0C0>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+                     │    └ <function AsyncClient._send_handling_redirects at 0x000001DD8EF4A160>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+                     │    │                    └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+                     │    └ <function AsyncClient._send_single_request at 0x000001DD8EF4A200>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+                     │         │                    └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+                     │         └ <function AsyncHTTPTransport.handle_async_request at 0x000001DD8EF36DE0>
+                     └ <httpx.AsyncHTTPTransport object at 0x000001DD930FC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         └ <function map_httpcore_exceptions at 0x000001DD8EF363E0>
+  File "D:\software\python3.13\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    │    │   │     └ ConnectError(OSError('All connection attempts failed'))
+    │    │   └ <method 'throw' of 'generator' objects>
+    │    └ <generator object map_httpcore_exceptions at 0x000001DD930E2C40>
+    └ <contextlib._GeneratorContextManager object at 0x000001DD9328C360>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+          │          └ 'All connection attempts failed'
+          └ <class 'httpx.ConnectError'>
+
+httpx.ConnectError: All connection attempts failed
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from 'D:\\develop\\tiangong-agent-main\\tiangong-agent-main\\.venv\\Lib\\site-packages\\uvicorn\\__init__.py'>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x000001DDEE3F5B20>
+           └ <Command main>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x000001DDEE65C1A0>
+         │    └ <function Command.invoke at 0x000001DDEE3F5800>
+         └ <Command main>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'host': '0.0.0.0', 'port': 8080, 'app': 'src.main:app', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload...
+           │   │      │    │           └ <click.core.Context object at 0x000001DDEE65C1A0>
+           │   │      │    └ <function main at 0x000001DDEE652A20>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x000001DDEE3F4A40>
+           └ <click.core.Context object at 0x000001DDEE65C1A0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'host': '0.0.0.0', 'port': 8080, 'app': 'src.main:app', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload...
+           │         └ ()
+           └ <function main at 0x000001DDEE652A20>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\main.py", line 433, in main
+    run(
+    └ <function run at 0x000001DDEE4BF380>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\main.py", line 606, in run
+    server.run()
+    │      └ <function Server.run at 0x000001DDEE4BEB60>
+    └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x000001DDEE474360>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x000001DDEE65C440>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x000001DDEE4BEC00>
+           │           └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+           └ <function run at 0x000001DDEDCC7CE0>
+  File "D:\software\python3.13\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000001DDEE607CA0>
+           │      └ <function Runner.run at 0x000001DDEDD82200>
+           └ <asyncio.runners.Runner object at 0x000001DDEE65CD70>
+  File "D:\software\python3.13\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001DDEDD7FD80>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001DDEE65CD70>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001DDEDD7FCE0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001DDEDD81B20>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 2042, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001DDEDCB4CC0>
+    └ <Handle Task.task_wakeup()>
+  File "D:\software\python3.13\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001DD9182BF60>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001DD91293E00>
+          └ <src.middlewares.logging.LoggingMiddleware object at 0x000001DD91448050>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001DD9182BF60>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001DD930B3DD0>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001DD91293E00>
+          └ <function wrap_app_handling_exceptions at 0x000001DDEF644FE0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD931D7740>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD931D7740>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD931D7740>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>>
+          └ <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD931D7740>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │     └ <function Route.handle at 0x000001DDEF646840>
+          └ APIRoute(path='/api/v1/chat', name='chat', methods=['POST'])
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD931D7740>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001DD91397CE0>
+          └ APIRoute(path='/api/v1/chat', name='chat', methods=['POST'])
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD931D7740>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001DD931CD2E0>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001DD931D7880>
+          └ <function wrap_app_handling_exceptions at 0x000001DDEF644FE0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD931D7560>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD91838860>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001DD931D7880>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 116, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001DD931CD2E0>
+                     └ <function get_request_handler.<locals>.app at 0x000001DD91397EC0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000001DDEF66CC20>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'req': ChatRequest(user_id='ui83w0qog', session_id='st7ef55mo', message='1')}
+                 │         └ <function chat at 0x000001DD8E945940>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "D:\develop\tiangong-agent-main\tiangong-agent-main\src\modules\chat.py", line 33, in chat
+    reply = await asyncio.wait_for(
+                  │       └ <function wait_for at 0x000001DDEDD7BB00>
+                  └ <module 'asyncio' from 'D:\\software\\python3.13\\Lib\\asyncio\\__init__.py'>
+
+  File "D:\software\python3.13\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+                 └ <coroutine object chat_endpoint at 0x000001DD930E2740>
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\src\agents\supervisor_agent.py", line 107, in chat_endpoint
+    result = await agent.ainvoke(
+                   │     └ <function Pregel.ainvoke at 0x000001DD90762FC0>
+                   └ <langgraph.graph.state.CompiledStateGraph object at 0x000001DD93091E50>
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3479, in ainvoke
+    async for chunk in self.astream(
+              │        │    └ <function Pregel.astream at 0x000001DD90762980>
+              │        └ <langgraph.graph.state.CompiledStateGraph object at 0x000001DD93091E50>
+              └ ('values', {'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={}, id='89730138-ecf0-429e-8596-6...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3128, in astream
+    async for _ in runner.atick(
+              │    │      └ <function PregelRunner.atick at 0x000001DD90760220>
+              │    └ <langgraph.pregel._runner.PregelRunner object at 0x000001DD93093ED0>
+              └ None
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\_runner.py", line 304, in atick
+    await arun_with_retry(
+          └ <function arun_with_retry at 0x000001DD9074F9C0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 242, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+                 │    │            │    │      └ {'metadata': {'ls_integration': 'langchain_create_agent', 'thread_id': 'ui83w0qog:st7ef55mo', 'langgraph_step': 43, 'langgrap...
+                 │    │            │    └ <member 'input' of 'PregelExecutableTask' objects>
+                 │    │            └ PregelExecutableTask(name='model', input={'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={},...
+                 │    └ <member 'proc' of 'PregelExecutableTask' objects>
+                 └ PregelExecutableTask(name='model', input={'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={},...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 705, in ainvoke
+    input = await asyncio.create_task(
+                  │       └ <function create_task at 0x000001DDEDCFF7E0>
+                  └ <module 'asyncio' from 'D:\\software\\python3.13\\Lib\\asyncio\\__init__.py'>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+                │    │      │       └ {'runtime': Runtime(context=None, store=<src.infra.milvus_store.MilvusStore object at 0x000001DD91C4D010>, stream_writer=<fun...
+                │    │      └ ({'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={}, id='89730138-ecf0-429e-8596-66761783bba...
+                │    └ <function create_agent.<locals>.amodel_node at 0x000001DD93152700>
+                └ model_node(tags=None, recurse=True, explode_args=False, func_accepts={'runtime': ('N/A', <class 'inspect._empty'>)})
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain\agents\factory.py", line 1358, in amodel_node
+    model_response = await _execute_model_async(request)
+                           │                    └ ModelRequest(model=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC59...
+                           └ <function create_agent.<locals>._execute_model_async at 0x000001DD93151260>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain\agents\factory.py", line 1330, in _execute_model_async
+    output = await model_.ainvoke(messages)
+                   │      │       └ [SystemMessage(content='你是天宫医疗的智能助手。当用户提到重要的个人信息或病史时，使用 save_memory 工具记住它。当需要回忆用户历史信息时，使用 search_memory 工具检索。', additional_kw...
+                   │      └ <function RunnableBindingBase.ainvoke at 0x000001DD903E9800>
+                   └ RunnableBinding(bound=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930D...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\runnables\base.py", line 5708, in ainvoke
+    return await self.bound.ainvoke(
+                 │    │     └ <function BaseChatModel.ainvoke at 0x000001DD90444AE0>
+                 │    └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+                 └ RunnableBinding(bound=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930D...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 477, in ainvoke
+    llm_result = await self.agenerate_prompt(
+                       │    └ <function BaseChatModel.agenerate_prompt at 0x000001DD90445300>
+                       └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1196, in agenerate_prompt
+    return await self.agenerate(
+                 │    └ <function BaseChatModel.agenerate at 0x000001DD904451C0>
+                 └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1154, in agenerate
+    raise exceptions[0]
+          └ [APIConnectionError('Connection error.')]
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1423, in _agenerate_with_cache
+    result = await self._agenerate(
+                   │    └ <function BaseChatOpenAI._agenerate at 0x000001DD912D8360>
+                   └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 1754, in _agenerate
+    _handle_openai_api_error(e)
+    └ <function _handle_openai_api_error at 0x000001DD912BB420>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 1747, in _agenerate
+    raw_response = await self.async_client.with_raw_response.create(
+                         │    │            │                 └ <function AsyncCompletions.create at 0x000001DD93204EA0>
+                         │    │            └ <openai.resources.chat.completions.completions.AsyncCompletionsWithRawResponse object at 0x000001DD930DF8C0>
+                         │    └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD930DCAD0>
+                         └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_legacy_response.py", line 384, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+           │    │                 │         │     │       └ {'model': 'deepseek-v4-flash', 'stream': False, 'tools': [{'type': 'function', 'function': {'name': 'save_memory', 'descripti...
+           │    │                 │         │     └ ()
+           │    │                 │         └ <bound method AsyncCompletions.create of <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD...
+           │    │                 └ ~R
+           │    └ <class 'openai._legacy_response.LegacyAPIResponse'>
+           └ <function cast at 0x000001DDEDD6B2E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+                 │    └ <bound method AsyncAPIClient.post of <openai.AsyncOpenAI object at 0x000001DD930DC6E0>>
+                 └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD930DCAD0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1884, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+                 │    │       │        │            │                  └ openai.AsyncStream[openai.types.chat.chat_completion_chunk.ChatCompletionChunk]
+                 │    │       │        │            └ False
+                 │    │       │        └ FinalRequestOptions(method='post', url='/chat/completions', params={}, headers={'X-Stainless-Raw-Response': 'true'}, max_retr...
+                 │    │       └ <class 'openai.types.chat.chat_completion.ChatCompletion'>
+                 │    └ <function AsyncAPIClient.request at 0x000001DD91102E80>
+                 └ <openai.AsyncOpenAI object at 0x000001DD930DC6E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1636, in request
+    raise APIConnectionError(request=request) from err
+          │                          └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+          └ <class 'openai.APIConnectionError'>
+
+openai.APIConnectionError: Connection error.
+During task with name 'model' and id '2ed06568-5f29-50f6-a6fd-f89df4925f74'
+2026-08-07 00:14:56 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=500 9583.93ms
+2026-08-07 00:15:13 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:15:13 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.20ms
+2026-08-07 00:15:15 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:15:15 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 0.64ms
+2026-08-07 00:15:15 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:15:15 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 0.86ms
+2026-08-07 00:15:15 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:15:15 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 0.71ms
+2026-08-07 00:15:16 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:15:16 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 0.77ms
+2026-08-07 00:15:16 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:15:16 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 0.82ms
+2026-08-07 00:15:16 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:15:16 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 0.62ms
+2026-08-07 00:15:16 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:15:16 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 0.68ms
+2026-08-07 00:17:25 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:17:25 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.34ms
+2026-08-07 00:17:25 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /favicon.ico
+2026-08-07 00:17:25 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /favicon.ico status=404 0.63ms
+2026-08-07 00:17:35 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 00:17:43 | ERROR    | src.modules.chat:chat:56 - 对话失败: user=ui83w0qog session=st7ef55mo error=Connection error.
+Traceback (most recent call last):
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+                 │    │     │                    └ <Request [b'POST']>
+                 │    │     └ <function AsyncConnectionPool.handle_async_request at 0x000001DD91C328E0>
+                 │    └ <AsyncHTTPProxy [Requests: 0 active, 0 queued | Connections: 0 active, 0 idle]>
+                 └ <httpx.AsyncHTTPTransport object at 0x000001DD930FC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+                     │          └ <function AsyncTunnelHTTPConnection.handle_async_request at 0x000001DD91C33BA0>
+                     └ <AsyncTunnelHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\http_proxy.py", line 288, in handle_async_request
+    connect_response = await self._connection.handle_async_request(
+                             │    │           └ <function AsyncHTTPConnection.handle_async_request at 0x000001DD91C319E0>
+                             │    └ <AsyncHTTPConnection [CONNECTION FAILED]>
+                             └ <AsyncTunnelHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+                   │    │        └ <Request [b'CONNECT']>
+                   │    └ <function AsyncHTTPConnection._connect at 0x000001DD91C31A80>
+                   └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+                   │    │                │             └ {'host': '127.0.0.1', 'port': 10812, 'local_address': None, 'timeout': 5.0, 'socket_options': None}
+                   │    │                └ <function AutoBackend.connect_tcp at 0x000001DD91C13880>
+                   │    └ <httpcore._backends.auto.AutoBackend object at 0x000001DD930FCCB0>
+                   └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+                 │    │        └ <function AnyIOBackend.connect_tcp at 0x000001DD91C35940>
+                 │    └ <httpcore.AnyIOBackend object at 0x000001DD93092990>
+                 └ <httpcore._backends.auto.AutoBackend object at 0x000001DD930FCCB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         │              └ {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>, <class 'anyio...
+         └ <function map_exceptions at 0x000001DD91BAF4C0>
+  File "D:\software\python3.13\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    │    │   │     └ OSError('All connection attempts failed')
+    │    │   └ <method 'throw' of 'generator' objects>
+    │    └ <generator object map_exceptions at 0x000001DD91CA3C40>
+    └ <contextlib._GeneratorContextManager object at 0x000001DD935C9470>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+          └ <class 'httpcore.ConnectError'>
+
+httpcore.ConnectError: All connection attempts failed
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1604, in request
+    response = await self._client.send(
+                     │    │       └ <function AsyncClient.send at 0x000001DD8EF4A020>
+                     │    └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+                     └ <openai.AsyncOpenAI object at 0x000001DD930DC6E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+                     │    └ <function AsyncClient._send_handling_auth at 0x000001DD8EF4A0C0>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+                     │    └ <function AsyncClient._send_handling_redirects at 0x000001DD8EF4A160>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+                     │    │                    └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+                     │    └ <function AsyncClient._send_single_request at 0x000001DD8EF4A200>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+                     │         │                    └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+                     │         └ <function AsyncHTTPTransport.handle_async_request at 0x000001DD8EF36DE0>
+                     └ <httpx.AsyncHTTPTransport object at 0x000001DD930FC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         └ <function map_httpcore_exceptions at 0x000001DD8EF363E0>
+  File "D:\software\python3.13\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    │    │   │     └ ConnectError(OSError('All connection attempts failed'))
+    │    │   └ <method 'throw' of 'generator' objects>
+    │    └ <generator object map_httpcore_exceptions at 0x000001DD93290040>
+    └ <contextlib._GeneratorContextManager object at 0x000001DD935C9400>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+          │          └ 'All connection attempts failed'
+          └ <class 'httpx.ConnectError'>
+
+httpx.ConnectError: All connection attempts failed
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from 'D:\\develop\\tiangong-agent-main\\tiangong-agent-main\\.venv\\Lib\\site-packages\\uvicorn\\__init__.py'>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x000001DDEE3F5B20>
+           └ <Command main>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x000001DDEE65C1A0>
+         │    └ <function Command.invoke at 0x000001DDEE3F5800>
+         └ <Command main>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'host': '0.0.0.0', 'port': 8080, 'app': 'src.main:app', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload...
+           │   │      │    │           └ <click.core.Context object at 0x000001DDEE65C1A0>
+           │   │      │    └ <function main at 0x000001DDEE652A20>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x000001DDEE3F4A40>
+           └ <click.core.Context object at 0x000001DDEE65C1A0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'host': '0.0.0.0', 'port': 8080, 'app': 'src.main:app', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload...
+           │         └ ()
+           └ <function main at 0x000001DDEE652A20>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\main.py", line 433, in main
+    run(
+    └ <function run at 0x000001DDEE4BF380>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\main.py", line 606, in run
+    server.run()
+    │      └ <function Server.run at 0x000001DDEE4BEB60>
+    └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x000001DDEE474360>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x000001DDEE65C440>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x000001DDEE4BEC00>
+           │           └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+           └ <function run at 0x000001DDEDCC7CE0>
+  File "D:\software\python3.13\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000001DDEE607CA0>
+           │      └ <function Runner.run at 0x000001DDEDD82200>
+           └ <asyncio.runners.Runner object at 0x000001DDEE65CD70>
+  File "D:\software\python3.13\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001DDEDD7FD80>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001DDEE65CD70>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001DDEDD7FCE0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001DDEDD81B20>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 2042, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001DDEDCB4CC0>
+    └ <Handle Task.task_wakeup()>
+  File "D:\software\python3.13\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001DD9359F2E0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001DD91293E00>
+          └ <src.middlewares.logging.LoggingMiddleware object at 0x000001DD91448050>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001DD9359F2E0>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001DD93502BA0>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001DD91293E00>
+          └ <function wrap_app_handling_exceptions at 0x000001DDEF644FE0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DC4A0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DC4A0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DC4A0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>>
+          └ <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DC4A0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │     └ <function Route.handle at 0x000001DDEF646840>
+          └ APIRoute(path='/api/v1/chat', name='chat', methods=['POST'])
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DC4A0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001DD91397CE0>
+          └ APIRoute(path='/api/v1/chat', name='chat', methods=['POST'])
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DC4A0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001DD93502990>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001DD935DC540>
+          └ <function wrap_app_handling_exceptions at 0x000001DDEF644FE0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DC040>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD9359F920>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001DD935DC540>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 116, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001DD93502990>
+                     └ <function get_request_handler.<locals>.app at 0x000001DD91397EC0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000001DDEF66CC20>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'req': ChatRequest(user_id='ui83w0qog', session_id='st7ef55mo', message='你好')}
+                 │         └ <function chat at 0x000001DD8E945940>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "D:\develop\tiangong-agent-main\tiangong-agent-main\src\modules\chat.py", line 33, in chat
+    reply = await asyncio.wait_for(
+                  │       └ <function wait_for at 0x000001DDEDD7BB00>
+                  └ <module 'asyncio' from 'D:\\software\\python3.13\\Lib\\asyncio\\__init__.py'>
+
+  File "D:\software\python3.13\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+                 └ <coroutine object chat_endpoint at 0x000001DD93292040>
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\src\agents\supervisor_agent.py", line 107, in chat_endpoint
+    result = await agent.ainvoke(
+                   │     └ <function Pregel.ainvoke at 0x000001DD90762FC0>
+                   └ <langgraph.graph.state.CompiledStateGraph object at 0x000001DD93091E50>
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3479, in ainvoke
+    async for chunk in self.astream(
+              │        │    └ <function Pregel.astream at 0x000001DD90762980>
+              │        └ <langgraph.graph.state.CompiledStateGraph object at 0x000001DD93091E50>
+              └ ('values', {'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={}, id='89730138-ecf0-429e-8596-6...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3128, in astream
+    async for _ in runner.atick(
+              │    │      └ <function PregelRunner.atick at 0x000001DD90760220>
+              │    └ <langgraph.pregel._runner.PregelRunner object at 0x000001DD9320D940>
+              └ None
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\_runner.py", line 304, in atick
+    await arun_with_retry(
+          └ <function arun_with_retry at 0x000001DD9074F9C0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 242, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+                 │    │            │    │      └ {'metadata': {'ls_integration': 'langchain_create_agent', 'thread_id': 'ui83w0qog:st7ef55mo', 'langgraph_step': 45, 'langgrap...
+                 │    │            │    └ <member 'input' of 'PregelExecutableTask' objects>
+                 │    │            └ PregelExecutableTask(name='model', input={'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={},...
+                 │    └ <member 'proc' of 'PregelExecutableTask' objects>
+                 └ PregelExecutableTask(name='model', input={'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={},...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 705, in ainvoke
+    input = await asyncio.create_task(
+                  │       └ <function create_task at 0x000001DDEDCFF7E0>
+                  └ <module 'asyncio' from 'D:\\software\\python3.13\\Lib\\asyncio\\__init__.py'>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+                │    │      │       └ {'runtime': Runtime(context=None, store=<src.infra.milvus_store.MilvusStore object at 0x000001DD91C4D010>, stream_writer=<fun...
+                │    │      └ ({'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={}, id='89730138-ecf0-429e-8596-66761783bba...
+                │    └ <function create_agent.<locals>.amodel_node at 0x000001DD93152700>
+                └ model_node(tags=None, recurse=True, explode_args=False, func_accepts={'runtime': ('N/A', <class 'inspect._empty'>)})
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain\agents\factory.py", line 1358, in amodel_node
+    model_response = await _execute_model_async(request)
+                           │                    └ ModelRequest(model=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC59...
+                           └ <function create_agent.<locals>._execute_model_async at 0x000001DD93151260>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain\agents\factory.py", line 1330, in _execute_model_async
+    output = await model_.ainvoke(messages)
+                   │      │       └ [SystemMessage(content='你是天宫医疗的智能助手。当用户提到重要的个人信息或病史时，使用 save_memory 工具记住它。当需要回忆用户历史信息时，使用 search_memory 工具检索。', additional_kw...
+                   │      └ <function RunnableBindingBase.ainvoke at 0x000001DD903E9800>
+                   └ RunnableBinding(bound=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930D...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\runnables\base.py", line 5708, in ainvoke
+    return await self.bound.ainvoke(
+                 │    │     └ <function BaseChatModel.ainvoke at 0x000001DD90444AE0>
+                 │    └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+                 └ RunnableBinding(bound=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930D...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 477, in ainvoke
+    llm_result = await self.agenerate_prompt(
+                       │    └ <function BaseChatModel.agenerate_prompt at 0x000001DD90445300>
+                       └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1196, in agenerate_prompt
+    return await self.agenerate(
+                 │    └ <function BaseChatModel.agenerate at 0x000001DD904451C0>
+                 └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1154, in agenerate
+    raise exceptions[0]
+          └ [APIConnectionError('Connection error.')]
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1423, in _agenerate_with_cache
+    result = await self._agenerate(
+                   │    └ <function BaseChatOpenAI._agenerate at 0x000001DD912D8360>
+                   └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 1754, in _agenerate
+    _handle_openai_api_error(e)
+    └ <function _handle_openai_api_error at 0x000001DD912BB420>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 1747, in _agenerate
+    raw_response = await self.async_client.with_raw_response.create(
+                         │    │            │                 └ <function AsyncCompletions.create at 0x000001DD93204EA0>
+                         │    │            └ <openai.resources.chat.completions.completions.AsyncCompletionsWithRawResponse object at 0x000001DD930DF8C0>
+                         │    └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD930DCAD0>
+                         └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_legacy_response.py", line 384, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+           │    │                 │         │     │       └ {'model': 'deepseek-v4-flash', 'stream': False, 'tools': [{'type': 'function', 'function': {'name': 'save_memory', 'descripti...
+           │    │                 │         │     └ ()
+           │    │                 │         └ <bound method AsyncCompletions.create of <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD...
+           │    │                 └ ~R
+           │    └ <class 'openai._legacy_response.LegacyAPIResponse'>
+           └ <function cast at 0x000001DDEDD6B2E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+                 │    └ <bound method AsyncAPIClient.post of <openai.AsyncOpenAI object at 0x000001DD930DC6E0>>
+                 └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD930DCAD0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1884, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+                 │    │       │        │            │                  └ openai.AsyncStream[openai.types.chat.chat_completion_chunk.ChatCompletionChunk]
+                 │    │       │        │            └ False
+                 │    │       │        └ FinalRequestOptions(method='post', url='/chat/completions', params={}, headers={'X-Stainless-Raw-Response': 'true'}, max_retr...
+                 │    │       └ <class 'openai.types.chat.chat_completion.ChatCompletion'>
+                 │    └ <function AsyncAPIClient.request at 0x000001DD91102E80>
+                 └ <openai.AsyncOpenAI object at 0x000001DD930DC6E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1636, in request
+    raise APIConnectionError(request=request) from err
+          │                          └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+          └ <class 'openai.APIConnectionError'>
+
+openai.APIConnectionError: Connection error.
+During task with name 'model' and id 'b7f04618-ea05-eff6-16c5-0280155d5b74'
+2026-08-07 00:17:43 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=500 7599.97ms
+2026-08-07 00:19:14 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 00:19:22 | ERROR    | src.modules.chat:chat:56 - 对话失败: user=u_test session=s_test error=Connection error.
+Traceback (most recent call last):
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+                 │    │     │                    └ <Request [b'POST']>
+                 │    │     └ <function AsyncConnectionPool.handle_async_request at 0x000001DD91C328E0>
+                 │    └ <AsyncHTTPProxy [Requests: 0 active, 0 queued | Connections: 0 active, 0 idle]>
+                 └ <httpx.AsyncHTTPTransport object at 0x000001DD930FC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+                     │          └ <function AsyncTunnelHTTPConnection.handle_async_request at 0x000001DD91C33BA0>
+                     └ <AsyncTunnelHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\http_proxy.py", line 288, in handle_async_request
+    connect_response = await self._connection.handle_async_request(
+                             │    │           └ <function AsyncHTTPConnection.handle_async_request at 0x000001DD91C319E0>
+                             │    └ <AsyncHTTPConnection [CONNECTION FAILED]>
+                             └ <AsyncTunnelHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+                   │    │        └ <Request [b'CONNECT']>
+                   │    └ <function AsyncHTTPConnection._connect at 0x000001DD91C31A80>
+                   └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+                   │    │                │             └ {'host': '127.0.0.1', 'port': 10812, 'local_address': None, 'timeout': 5.0, 'socket_options': None}
+                   │    │                └ <function AutoBackend.connect_tcp at 0x000001DD91C13880>
+                   │    └ <httpcore._backends.auto.AutoBackend object at 0x000001DD930FCCB0>
+                   └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+                 │    │        └ <function AnyIOBackend.connect_tcp at 0x000001DD91C35940>
+                 │    └ <httpcore.AnyIOBackend object at 0x000001DD93092990>
+                 └ <httpcore._backends.auto.AutoBackend object at 0x000001DD930FCCB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         │              └ {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>, <class 'anyio...
+         └ <function map_exceptions at 0x000001DD91BAF4C0>
+  File "D:\software\python3.13\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    │    │   │     └ OSError('All connection attempts failed')
+    │    │   └ <method 'throw' of 'generator' objects>
+    │    └ <generator object map_exceptions at 0x000001DD9326BE20>
+    └ <contextlib._GeneratorContextManager object at 0x000001DD931B7000>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+          └ <class 'httpcore.ConnectError'>
+
+httpcore.ConnectError: All connection attempts failed
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1604, in request
+    response = await self._client.send(
+                     │    │       └ <function AsyncClient.send at 0x000001DD8EF4A020>
+                     │    └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+                     └ <openai.AsyncOpenAI object at 0x000001DD930DC6E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+                     │    └ <function AsyncClient._send_handling_auth at 0x000001DD8EF4A0C0>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+                     │    └ <function AsyncClient._send_handling_redirects at 0x000001DD8EF4A160>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+                     │    │                    └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+                     │    └ <function AsyncClient._send_single_request at 0x000001DD8EF4A200>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x000001DD930DC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+                     │         │                    └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+                     │         └ <function AsyncHTTPTransport.handle_async_request at 0x000001DD8EF36DE0>
+                     └ <httpx.AsyncHTTPTransport object at 0x000001DD930FC830>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         └ <function map_httpcore_exceptions at 0x000001DD8EF363E0>
+  File "D:\software\python3.13\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    │    │   │     └ ConnectError(OSError('All connection attempts failed'))
+    │    │   └ <method 'throw' of 'generator' objects>
+    │    └ <generator object map_httpcore_exceptions at 0x000001DD930E3D40>
+    └ <contextlib._GeneratorContextManager object at 0x000001DD931B75B0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+          │          └ 'All connection attempts failed'
+          └ <class 'httpx.ConnectError'>
+
+httpx.ConnectError: All connection attempts failed
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from 'D:\\develop\\tiangong-agent-main\\tiangong-agent-main\\.venv\\Lib\\site-packages\\uvicorn\\__init__.py'>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x000001DDEE3F5B20>
+           └ <Command main>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x000001DDEE65C1A0>
+         │    └ <function Command.invoke at 0x000001DDEE3F5800>
+         └ <Command main>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'host': '0.0.0.0', 'port': 8080, 'app': 'src.main:app', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload...
+           │   │      │    │           └ <click.core.Context object at 0x000001DDEE65C1A0>
+           │   │      │    └ <function main at 0x000001DDEE652A20>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x000001DDEE3F4A40>
+           └ <click.core.Context object at 0x000001DDEE65C1A0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\click\core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'host': '0.0.0.0', 'port': 8080, 'app': 'src.main:app', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload...
+           │         └ ()
+           └ <function main at 0x000001DDEE652A20>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\main.py", line 433, in main
+    run(
+    └ <function run at 0x000001DDEE4BF380>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\main.py", line 606, in run
+    server.run()
+    │      └ <function Server.run at 0x000001DDEE4BEB60>
+    └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\uvicorn\server.py", line 75, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x000001DDEE474360>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x000001DDEE65C440>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x000001DDEE4BEC00>
+           │           └ <uvicorn.server.Server object at 0x000001DDEE65CAD0>
+           └ <function run at 0x000001DDEDCC7CE0>
+  File "D:\software\python3.13\Lib\asyncio\runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000001DDEE607CA0>
+           │      └ <function Runner.run at 0x000001DDEDD82200>
+           └ <asyncio.runners.Runner object at 0x000001DDEE65CD70>
+  File "D:\software\python3.13\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001DDEDD7FD80>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001DDEE65CD70>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 712, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001DDEDD7FCE0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 683, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001DDEDD81B20>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "D:\software\python3.13\Lib\asyncio\base_events.py", line 2042, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001DDEDCB4CC0>
+    └ <Handle Task.task_wakeup()>
+  File "D:\software\python3.13\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001DD935DC860>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001DD91293E00>
+          └ <src.middlewares.logging.LoggingMiddleware object at 0x000001DD91448050>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001DD935DC860>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001DD93502E60>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001DD91293E00>
+          └ <function wrap_app_handling_exceptions at 0x000001DDEF644FE0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DD080>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DD080>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001DD91293CB0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DD080>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>>
+          └ <fastapi.routing.APIRouter object at 0x000001DD8E8AE8B0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DD080>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │     └ <function Route.handle at 0x000001DDEF646840>
+          └ APIRoute(path='/api/v1/chat', name='chat', methods=['POST'])
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DD080>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │    └ <function request_response.<locals>.app at 0x000001DD91397CE0>
+          └ APIRoute(path='/api/v1/chat', name='chat', methods=['POST'])
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DD080>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x000001DD93503120>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001DD935DD580>
+          └ <function wrap_app_handling_exceptions at 0x000001DDEF644FE0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001DD935DD6C0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001DD935DC680>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8080), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001DD935DD580>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 116, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001DD93503120>
+                     └ <function get_request_handler.<locals>.app at 0x000001DD91397EC0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000001DDEF66CC20>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\fastapi\routing.py", line 324, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'req': ChatRequest(user_id='u_test', session_id='s_test', message='你好')}
+                 │         └ <function chat at 0x000001DD8E945940>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+> File "D:\develop\tiangong-agent-main\tiangong-agent-main\src\modules\chat.py", line 33, in chat
+    reply = await asyncio.wait_for(
+                  │       └ <function wait_for at 0x000001DDEDD7BB00>
+                  └ <module 'asyncio' from 'D:\\software\\python3.13\\Lib\\asyncio\\__init__.py'>
+
+  File "D:\software\python3.13\Lib\asyncio\tasks.py", line 507, in wait_for
+    return await fut
+                 └ <coroutine object chat_endpoint at 0x000001DD93292540>
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\src\agents\supervisor_agent.py", line 107, in chat_endpoint
+    result = await agent.ainvoke(
+                   │     └ <function Pregel.ainvoke at 0x000001DD90762FC0>
+                   └ <langgraph.graph.state.CompiledStateGraph object at 0x000001DD93091E50>
+
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3479, in ainvoke
+    async for chunk in self.astream(
+              │        │    └ <function Pregel.astream at 0x000001DD90762980>
+              │        └ <langgraph.graph.state.CompiledStateGraph object at 0x000001DD93091E50>
+              └ ('values', {'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={}, id='7bcfa373-15c7-4e7b-9246-2...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3128, in astream
+    async for _ in runner.atick(
+              │    │      └ <function PregelRunner.atick at 0x000001DD90760220>
+              │    └ <langgraph.pregel._runner.PregelRunner object at 0x000001DD9320F100>
+              └ None
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\_runner.py", line 304, in atick
+    await arun_with_retry(
+          └ <function arun_with_retry at 0x000001DD9074F9C0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 242, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+                 │    │            │    │      └ {'metadata': {'ls_integration': 'langchain_create_agent', 'thread_id': 'ui83w0qog:st7ef55mo', 'langgraph_step': 1, 'langgraph...
+                 │    │            │    └ <member 'input' of 'PregelExecutableTask' objects>
+                 │    │            └ PregelExecutableTask(name='model', input={'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={},...
+                 │    └ <member 'proc' of 'PregelExecutableTask' objects>
+                 └ PregelExecutableTask(name='model', input={'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={},...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 705, in ainvoke
+    input = await asyncio.create_task(
+                  │       └ <function create_task at 0x000001DDEDCFF7E0>
+                  └ <module 'asyncio' from 'D:\\software\\python3.13\\Lib\\asyncio\\__init__.py'>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+                │    │      │       └ {'runtime': Runtime(context=None, store=<src.infra.milvus_store.MilvusStore object at 0x000001DD91C4D010>, stream_writer=<fun...
+                │    │      └ ({'messages': [HumanMessage(content='你好', additional_kwargs={}, response_metadata={}, id='7bcfa373-15c7-4e7b-9246-2484c4c32fa...
+                │    └ <function create_agent.<locals>.amodel_node at 0x000001DD93152700>
+                └ model_node(tags=None, recurse=True, explode_args=False, func_accepts={'runtime': ('N/A', <class 'inspect._empty'>)})
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain\agents\factory.py", line 1358, in amodel_node
+    model_response = await _execute_model_async(request)
+                           │                    └ ModelRequest(model=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC59...
+                           └ <function create_agent.<locals>._execute_model_async at 0x000001DD93151260>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain\agents\factory.py", line 1330, in _execute_model_async
+    output = await model_.ainvoke(messages)
+                   │      │       └ [SystemMessage(content='你是天宫医疗的智能助手。当用户提到重要的个人信息或病史时，使用 save_memory 工具记住它。当需要回忆用户历史信息时，使用 search_memory 工具检索。', additional_kw...
+                   │      └ <function RunnableBindingBase.ainvoke at 0x000001DD903E9800>
+                   └ RunnableBinding(bound=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930D...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\runnables\base.py", line 5708, in ainvoke
+    return await self.bound.ainvoke(
+                 │    │     └ <function BaseChatModel.ainvoke at 0x000001DD90444AE0>
+                 │    └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+                 └ RunnableBinding(bound=ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930D...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 477, in ainvoke
+    llm_result = await self.agenerate_prompt(
+                       │    └ <function BaseChatModel.agenerate_prompt at 0x000001DD90445300>
+                       └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1196, in agenerate_prompt
+    return await self.agenerate(
+                 │    └ <function BaseChatModel.agenerate at 0x000001DD904451C0>
+                 └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1154, in agenerate
+    raise exceptions[0]
+          └ [APIConnectionError('Connection error.')]
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1423, in _agenerate_with_cache
+    result = await self._agenerate(
+                   │    └ <function BaseChatOpenAI._agenerate at 0x000001DD912D8360>
+                   └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 1754, in _agenerate
+    _handle_openai_api_error(e)
+    └ <function _handle_openai_api_error at 0x000001DD912BB420>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 1747, in _agenerate
+    raw_response = await self.async_client.with_raw_response.create(
+                         │    │            │                 └ <function AsyncCompletions.create at 0x000001DD93204EA0>
+                         │    │            └ <openai.resources.chat.completions.completions.AsyncCompletionsWithRawResponse object at 0x000001DD930DF8C0>
+                         │    └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD930DCAD0>
+                         └ ChatDeepSeek(client=<openai.resources.chat.completions.completions.Completions object at 0x000001DD930DC590>, async_client=<o...
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_legacy_response.py", line 384, in wrapped
+    return cast(LegacyAPIResponse[R], await func(*args, **kwargs))
+           │    │                 │         │     │       └ {'model': 'deepseek-v4-flash', 'stream': False, 'tools': [{'type': 'function', 'function': {'name': 'save_memory', 'descripti...
+           │    │                 │         │     └ ()
+           │    │                 │         └ <bound method AsyncCompletions.create of <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD...
+           │    │                 └ ~R
+           │    └ <class 'openai._legacy_response.LegacyAPIResponse'>
+           └ <function cast at 0x000001DDEDD6B2E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2714, in create
+    return await self._post(
+                 │    └ <bound method AsyncAPIClient.post of <openai.AsyncOpenAI object at 0x000001DD930DC6E0>>
+                 └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x000001DD930DCAD0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1884, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+                 │    │       │        │            │                  └ openai.AsyncStream[openai.types.chat.chat_completion_chunk.ChatCompletionChunk]
+                 │    │       │        │            └ False
+                 │    │       │        └ FinalRequestOptions(method='post', url='/chat/completions', params={}, headers={'X-Stainless-Raw-Response': 'true'}, max_retr...
+                 │    │       └ <class 'openai.types.chat.chat_completion.ChatCompletion'>
+                 │    └ <function AsyncAPIClient.request at 0x000001DD91102E80>
+                 └ <openai.AsyncOpenAI object at 0x000001DD930DC6E0>
+  File "D:\develop\tiangong-agent-main\tiangong-agent-main\.venv\Lib\site-packages\openai\_base_client.py", line 1636, in request
+    raise APIConnectionError(request=request) from err
+          │                          └ <Request('POST', 'https://api.deepseek.com/v1/chat/completions')>
+          └ <class 'openai.APIConnectionError'>
+
+openai.APIConnectionError: Connection error.
+During task with name 'model' and id '2d5b8ed9-7287-7b0b-848c-903d10b7254a'
+2026-08-07 00:19:22 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=500 7650.00ms
+2026-08-07 00:20:26 | INFO     | src.main:lifespan:35 - tiangong-agent 启动.. | 使用环境： dev
+2026-08-07 00:20:26 | INFO     | src.infra.minio_client:ensure_bucket_exists:35 - 检查桶 knowledge-docs 是否存在：True
+2026-08-07 00:20:26 | INFO     | src.infra.milvus_client:check_milvus_health:38 - Milvus 连接成功，当前集合数量：1
+2026-08-07 00:25:02 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health
+2026-08-07 00:25:02 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health status=200 39.92ms
+2026-08-07 00:25:02 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 00:25:23 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=200 20947.11ms
+2026-08-07 00:25:39 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 00:25:39 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.97ms
+2026-08-07 00:25:53 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 00:25:56 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=200 2204.63ms
+2026-08-07 01:00:15 | INFO     | src.main:lifespan:35 - tiangong-agent 启动.. | 使用环境： dev
+2026-08-07 01:00:15 | INFO     | src.infra.minio_client:ensure_bucket_exists:35 - 检查桶 knowledge-docs 是否存在：False
+2026-08-07 01:00:15 | INFO     | src.infra.milvus_client:check_milvus_health:38 - Milvus 连接成功，当前集合数量：0
+2026-08-07 01:01:45 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health
+2026-08-07 01:01:45 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health status=200 1.98ms
+2026-08-07 01:01:45 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health/deps
+2026-08-07 01:01:45 | INFO     | src.infra.milvus_client:check_milvus_health:38 - Milvus 连接成功，当前集合数量：0
+2026-08-07 01:01:45 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health/deps status=200 262.28ms
+2026-08-07 01:02:24 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /
+2026-08-07 01:02:24 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET / status=404 1.34ms
+2026-08-07 01:02:24 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /favicon.ico
+2026-08-07 01:02:24 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /favicon.ico status=404 1.27ms
+2026-08-07 01:02:31 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:02:31 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 54.13ms
+2026-08-07 01:02:35 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 01:02:55 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=200 19996.91ms
+2026-08-07 01:05:30 | INFO     | src.main:lifespan:35 - tiangong-agent 启动.. | 使用环境： dev
+2026-08-07 01:05:30 | INFO     | src.infra.minio_client:ensure_bucket_exists:35 - 检查桶 knowledge-docs 是否存在：True
+2026-08-07 01:05:30 | INFO     | src.infra.milvus_client:check_milvus_health:38 - Milvus 连接成功，当前集合数量：1
+2026-08-07 01:07:14 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health
+2026-08-07 01:07:14 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health status=200 5.83ms
+2026-08-07 01:07:22 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:07:22 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.95ms
+2026-08-07 01:07:24 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:07:24 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.36ms
+2026-08-07 01:07:25 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:07:25 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 4.52ms
+2026-08-07 01:07:25 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:07:25 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 4.63ms
+2026-08-07 01:07:25 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:07:25 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 5.42ms
+2026-08-07 01:07:26 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:07:26 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 5.15ms
+2026-08-07 01:07:26 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:07:26 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 4.78ms
+2026-08-07 01:07:34 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 01:07:39 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=200 4579.48ms
+2026-08-07 01:08:21 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:21 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.66ms
+2026-08-07 01:08:25 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:25 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.33ms
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 13.54ms
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.72ms
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 5.78ms
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 6.86ms
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:26 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.07ms
+2026-08-07 01:08:27 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:27 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 22.03ms
+2026-08-07 01:08:27 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:27 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 5.01ms
+2026-08-07 01:08:27 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:27 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 29.64ms
+2026-08-07 01:08:27 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:27 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 22.50ms
+2026-08-07 01:08:32 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:32 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 8.84ms
+2026-08-07 01:08:32 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:32 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.48ms
+2026-08-07 01:08:33 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:33 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.79ms
+2026-08-07 01:08:33 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:33 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 47.14ms
+2026-08-07 01:08:33 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:33 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 12.70ms
+2026-08-07 01:08:33 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:33 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 7.37ms
+2026-08-07 01:08:34 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:34 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 113.15ms
+2026-08-07 01:08:34 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:34 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 22.28ms
+2026-08-07 01:08:34 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:34 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 8.86ms
+2026-08-07 01:08:34 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:34 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.23ms
+2026-08-07 01:08:35 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:35 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 11.19ms
+2026-08-07 01:08:35 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:35 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.46ms
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 28.63ms
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 4.45ms
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 67.65ms
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.68ms
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:36 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.42ms
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.48ms
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.15ms
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 91.31ms
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.19ms
+2026-08-07 01:08:37 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:38 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 34.18ms
+2026-08-07 01:08:38 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:38 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 29.42ms
+2026-08-07 01:08:38 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:38 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.91ms
+2026-08-07 01:08:38 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:39 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 366.16ms
+2026-08-07 01:08:39 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:39 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.11ms
+2026-08-07 01:08:39 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:39 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.30ms
+2026-08-07 01:08:39 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:39 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.79ms
+2026-08-07 01:08:40 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:40 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.10ms
+2026-08-07 01:08:40 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:40 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 38.04ms
+2026-08-07 01:08:40 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:40 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 3.92ms
+2026-08-07 01:08:40 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:40 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.59ms
+2026-08-07 01:08:41 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:41 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.29ms
+2026-08-07 01:08:41 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:41 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.35ms
+2026-08-07 01:08:41 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:41 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 2.14ms
+2026-08-07 01:08:41 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:41 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 45.31ms
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.53ms
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.54ms
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 2.46ms
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 4.20ms
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:42 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 2.45ms
+2026-08-07 01:08:43 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:43 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.17ms
+2026-08-07 01:08:43 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:43 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 40.20ms
+2026-08-07 01:08:43 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:43 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.93ms
+2026-08-07 01:08:43 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:43 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.16ms
+2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 2.18ms
+2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 4.27ms
+2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 31.55ms

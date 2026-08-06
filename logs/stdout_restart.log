@@ -1,0 +1,15 @@
+[32m2026-08-07 00:20:26[0m | [1mINFO    [0m | [36msrc.main[0m:[36mlifespan[0m:[36m35[0m - [1mtiangong-agent Æô¶¯.. | Ê¹ÓÃ»·¾³£º dev[0m
+[32m2026-08-07 00:20:26[0m | [1mINFO    [0m | [36msrc.infra.minio_client[0m:[36mensure_bucket_exists[0m:[36m35[0m - [1m¼ì²éÍ° knowledge-docs ÊÇ·ñ´æÔÚ£ºTrue[0m
+[32m2026-08-07 00:20:26[0m | [1mINFO    [0m | [36msrc.infra.milvus_client[0m:[36mcheck_milvus_health[0m:[36m38[0m - [1mMilvus Á¬½Ó³É¹¦£¬µ±Ç°¼¯ºÏÊýÁ¿£º1[0m
+[32m2026-08-07 00:25:02[0m | [1mINFO    [0m | [36msrc.middlewares.logging[0m:[36mdispatch[0m:[36m12[0m - [1m--> GET /health[0m
+[32m2026-08-07 00:25:02[0m | [1mINFO    [0m | [36msrc.middlewares.logging[0m:[36mdispatch[0m:[36m19[0m - [1m<-- GET /health status=200 39.92ms[0m
+INFO:     127.0.0.1:59121 - "GET /health HTTP/1.1" 200 OK
+[32m2026-08-07 00:25:02[0m | [1mINFO    [0m | [36msrc.middlewares.logging[0m:[36mdispatch[0m:[36m12[0m - [1m--> POST /api/v1/chat[0m
+[32m2026-08-07 00:25:23[0m | [1mINFO    [0m | [36msrc.middlewares.logging[0m:[36mdispatch[0m:[36m19[0m - [1m<-- POST /api/v1/chat status=200 20947.11ms[0m
+INFO:     127.0.0.1:59121 - "POST /api/v1/chat HTTP/1.1" 200 OK
+[32m2026-08-07 00:25:39[0m | [1mINFO    [0m | [36msrc.middlewares.logging[0m:[36mdispatch[0m:[36m12[0m - [1m--> GET /chat[0m
+[32m2026-08-07 00:25:39[0m | [1mINFO    [0m | [36msrc.middlewares.logging[0m:[36mdispatch[0m:[36m19[0m - [1m<-- GET /chat status=200 1.97ms[0m
+INFO:     127.0.0.1:64470 - "GET /chat HTTP/1.1" 200 OK
+[32m2026-08-07 00:25:53[0m | [1mINFO    [0m | [36msrc.middlewares.logging[0m:[36mdispatch[0m:[36m12[0m - [1m--> POST /api/v1/chat[0m
+[32m2026-08-07 00:25:56[0m | [1mINFO    [0m | [36msrc.middlewares.logging[0m:[36mdispatch[0m:[36m19[0m - [1m<-- POST /api/v1/chat status=200 2204.63ms[0m
+INFO:     127.0.0.1:62602 - "POST /api/v1/chat HTTP/1.1" 200 OK
