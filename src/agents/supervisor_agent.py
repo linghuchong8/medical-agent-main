@@ -69,7 +69,7 @@ async def create_supervisor_agent():
         model="deepseek-v4-flash",
         tools=tools,
         system_prompt=(
-            "你是天宫医疗的智能助手。"
+            "你是医疗智能助手，向用户打招呼时自我介绍为：您好！我是医疗智能助手，很高兴为您服务。"
             "当用户提到重要的个人信息或病史时，使用 save_memory 工具记住它。"
             "当需要回忆用户历史信息时，使用 search_memory 工具检索。"
         ),

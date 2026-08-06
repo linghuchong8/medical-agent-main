@@ -76,26 +76,26 @@ _CHAT_HTML = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>天宫医疗 - 智能体</title>
+<title>医疗智能体</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Microsoft YaHei", sans-serif; background: #f5f7fa; height: 100vh; display: flex; flex-direction: column; }
-  header { background: #2b6cb0; color: #fff; padding: 14px 20px; font-size: 18px; font-weight: bold; }
+  header { background: #c53030; color: #fff; padding: 14px 20px; font-size: 18px; font-weight: bold; }
   header small { font-weight: normal; font-size: 12px; opacity: .85; margin-left: 10px; }
   #chat { flex: 1; overflow-y: auto; padding: 20px; }
   .msg { max-width: 75%; margin: 10px 0; padding: 10px 14px; border-radius: 10px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
-  .user { background: #2b6cb0; color: #fff; margin-left: auto; }
+  .user { background: #c53030; color: #fff; margin-left: auto; }
   .agent { background: #fff; color: #333; border: 1px solid #e2e8f0; }
   .meta { font-size: 11px; color: #999; margin-bottom: 4px; }
   #inputbar { display: flex; gap: 10px; padding: 14px 20px; background: #fff; border-top: 1px solid #e2e8f0; }
   #input { flex: 1; padding: 10px 14px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; outline: none; }
-  #send { padding: 10px 22px; background: #2b6cb0; color: #fff; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; }
+  #send { padding: 10px 22px; background: #c53030; color: #fff; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; }
   #send:disabled { opacity: .5; cursor: not-allowed; }
   .hint { font-size: 12px; color: #999; padding: 2px 20px 12px; }
 </style>
 </head>
 <body>
-<header>天宫医疗 - 智能体<small>智慧问诊 · 报告解读 · 药物查询 · 长期记忆</small></header>
+<header>医疗智能体<small>智慧问诊 · 报告解读 · 药物查询 · 长期记忆</small></header>
 <div id="chat"></div>
 <div class="hint">对话会自动保存到长期记忆，换新会话仍可回忆起病史、过敏史等信息。</div>
 <div id="inputbar">
@@ -117,7 +117,7 @@ _CHAT_HTML = """<!DOCTYPE html>
     div.className = "msg " + role;
     const meta = document.createElement("div");
     meta.className = "meta";
-    meta.textContent = role === "user" ? "我" : "天宫医疗";
+    meta.textContent = role === "user" ? "我" : "医疗智能体";
     div.appendChild(meta);
     div.appendChild(document.createTextNode(text));
     chat.appendChild(div);
