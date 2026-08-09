@@ -6,6 +6,10 @@
 # 清数据：docker compose down -v
 # ============================================================
 
+# 固定 compose 项目名，避免不同调用方式（脚本 / 手动 -p）解析出不同项目名
+# 导致 "container name already in use" 冲突
+name: tiangong-agent-main
+
 services:
 
   # ----------------------------------------------------------

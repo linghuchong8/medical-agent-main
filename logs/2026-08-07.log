@@ -1318,3 +1318,23 @@ During task with name 'model' and id '2d5b8ed9-7287-7b0b-848c-903d10b7254a'
 2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 4.27ms
 2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
 2026-08-07 01:08:44 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 31.55ms
+2026-08-07 06:13:37 | INFO     | src.main:lifespan:35 - tiangong-agent 启动.. | 使用环境： dev
+2026-08-07 06:13:37 | INFO     | src.infra.minio_client:ensure_bucket_exists:35 - 检查桶 knowledge-docs 是否存在：True
+2026-08-07 06:13:37 | INFO     | src.infra.milvus_client:check_milvus_health:38 - Milvus 连接成功，当前集合数量：1
+2026-08-07 06:13:38 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health
+2026-08-07 06:13:38 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health status=200 2.67ms
+2026-08-07 06:57:24 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 06:57:24 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 15.02ms
+2026-08-07 06:57:25 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 06:57:25 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 25.13ms
+2026-08-07 06:57:28 | INFO     | src.middlewares.logging:dispatch:12 - --> POST /api/v1/chat
+2026-08-07 06:57:57 | INFO     | src.middlewares.logging:dispatch:19 - <-- POST /api/v1/chat status=200 29427.99ms
+2026-08-07 06:58:35 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 06:58:35 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 1.35ms
+2026-08-07 06:58:44 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /chat
+2026-08-07 06:58:44 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /chat status=200 20.23ms
+2026-08-07 07:15:48 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health/deps
+2026-08-07 07:15:48 | INFO     | src.infra.milvus_client:check_milvus_health:38 - Milvus 连接成功，当前集合数量：1
+2026-08-07 07:15:48 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health/deps status=200 435.28ms
+2026-08-07 07:27:57 | INFO     | src.middlewares.logging:dispatch:12 - --> GET /health
+2026-08-07 07:27:57 | INFO     | src.middlewares.logging:dispatch:19 - <-- GET /health status=200 1.42ms
